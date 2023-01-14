@@ -1,0 +1,32 @@
+{
+  "foods": [
+    {
+      "id": 1,
+      "name": "Potatoes"
+    },
+    {
+      "id": 2,
+      "name": "Cucumber"
+    },
+    {
+      "id": 3,
+      "name": "Tomato"
+    },
+    {
+      "id": 4,
+      "name": "Apple"
+    },
+    {
+      "id": 5,
+      "name": "Limon"
+    },
+    {
+      "id": 6,
+      "name": "Orange"
+    },
+    {
+      "name": "dsf",
+      "id": 7
+    }
+  ]
+}
