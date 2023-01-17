@@ -1,20 +1,42 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 export const foodsApi = createApi({
-    reducerPath: 'foodsApi', //название в общем store 
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/'}),//куда посылается запрос
-    endpoints: (build) => ({ // build -неважно название 
-        getFoods: build.query({  // query для данных без мутации
-            query: (limit = '') => `foods${limit && `?_limit=${limit}` }`, //название которое в db.json  || limit передается из app.js
+    reducerPath: 'foodsApi',
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/'}),
+    tagTypes: ['Food'], 
+    endpoints: (build) => ({  
+        getFoods: build.query({ 
+            query: (limit = '') => `foods${limit && `?_limit=${limit}` }`, 
+            providesTags: ['Food']
         }),
         addNewFood: build.mutation({ 
             query: body => ({
-              url: 'foods', // запрос на url, добавит к localhost:3001
+              url: 'foods', 
               method: 'POST',
-              body // id генерит автоматоматически
-            })
+              body 
+            }),
+            invalidatesTags: ['Food']
+        }),
+        deleteFood: build.mutation({ 
+            query: (id) => ({
+              url: `foods/${id}`, 
+              method: 'DELETE'
+            }),
+            invalidatesTags: ['Food']
+        }),
+        patchFood: build.mutation({
+            query: post => ({
+              url: `/foods/${post.id}`,
+              method: 'PATCH',
+              body: post
+            }),
+            invalidatesTags: ['Food']
         })
     })
 });
 
-export const { useGetFoodsQuery, useAddNewFoodMutation } = foodsApi; //так как реакт, получаем тут хуки
+export const { useGetFoodsQuery, useAddNewFoodMutation, useDeleteFoodMutation, usePatchFoodMutation } = foodsApi; 
+
+
+
+

@@ -91,3 +91,9 @@
     transform: translate(24px, 0);
   }
 }
+input[type="number" i] {
+  width: 62px;
+}
+.inputBlock input[type="text" i]{
+  margin-left: 15px;
+}

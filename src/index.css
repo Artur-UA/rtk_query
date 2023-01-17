@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.inputBlock{
+  display: flex;
+}
+button{
+  margin-left: 10px;
+}
+li{
+  list-style-type: none;
+}
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+.listFood{
+  display: flex;
+}
+.delete{
+  margin-left: 10px;
+}
